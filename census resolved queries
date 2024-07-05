@@ -1,0 +1,41 @@
+-- select * from dataset1;
+-- select * from dataset2;
+
+-- number of rows in our dataset
+-- select count(*) from dataset1;
+-- select count(*) from dataset2;
+
+-- Dataset for UP and Bihar
+-- select * from dataset1 where state in ("bihar" , "Uttarpradesh");
+-- select * from dataset2 where state in ("bihar" , "Uttarpradesh");
+
+-- Population of india
+-- select sum(population) as population from dataset2;
+-- select state, sum(population) as population from dataset2 group by state;
+-- select state, sum(population) as population from dataset2 group by state order by population desc;
+
+-- Average growth
+-- select avg(growth) as avg_growth from dataset1;
+-- select state, avg(growth) *100 as avg_growth from dataset1 group by state;
+-- select state, round(avg(growth),0) *100 as avg_growth from dataset1 group by state;
+
+-- Sex ratio
+-- select state, round(avg(sex_ratio),0) as avg_sex_ratio from dataset1 group by state order by avg_sex_ratio desc;
+
+-- Average litracy rate
+-- select state, round(avg(literacy),0) as avg_literacy from dataset1 group by state order by avg_literacy desc;
+-- select state, round(avg(literacy),0) as avg_literacy from dataset1 group by state having round(avg(literacy),0)>90 order by avg_literacy desc;
+
+-- Top 3 state showig highest growth ratio
+select state, avg(growth) as avg_growth from dataset1 group by state order by avg_growth desc limit 3 ;
+
+Bottom 3 state showing the lowest sex ratio
+-- select state, round(avg(sex_ratio),0) as avg_sex_ratio from dataset1 group by state order by avg_sex_ratio ASC limit 3;
+
+-- top and bottom 3 state in literacy state
+-- (select state, Literacy from dataset1 order by Literacy desc limit 3)
+-- union all
+-- (select state, Literacy from dataset1 order by Literacy asc limit 3);
+
+-- state staring with the letter A
+select distinct state from dataset1 where lower(state) like 'A%' 
